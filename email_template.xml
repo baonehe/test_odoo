@@ -1,0 +1,15 @@
+<odoo>
+    <record id="email_template_notify_hr" model="mail.template">
+        <field name="name">Critical Skill Notification</field>
+        <field name="model_id" ref="model_employee_skills"/>
+        <field name="email_from">${(object.employee_id.work_email) or 'noreply@yourcompany.com'}</field>
+        <field name="email_to">hr@yourcompany.com</field>
+        <field name="subject">Critical Skill Alert: ${object.name}</field>
+        <field name="body_html"><![CDATA[
+            <p>Dear HR,</p>
+            <p>The following skill has been marked as <strong>critical</strong> for employee ${object.employee_id.name}:</p>
+            <p><strong>Skill:</strong> ${object.name}</p>
+            <p>Please take necessary action.</p>
+        ]]></field>
+    </record>
+</odoo>
